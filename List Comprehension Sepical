@@ -1,0 +1,65 @@
+#Block 1
+nums = [4, 8, 15, 16, 23, 42]
+add_ten = [num+10 for num in nums]
+print(add_ten)
+------------------
+#Block 2
+nums = [4, 8, 15, 16, 23, 42]
+divide_by_two = [num/2 for num in nums]
+print(divide_by_two)
+------------------
+#Block 3 
+Create a new list named parity that contains a 1 or a 0 for each element of nums.
+For each element, if that element was even, the new list should contain a 0.
+If the element was odd, the new list should contain a 1.
+nums = [4, 8, 15, 16, 23, 42]
+parity = [num%2 for num in nums]
+print(parity)
+------------------
+#Block 4 - List of Strings
+names = ["Elaine", "George", "Jerry", "Cosmo"]
+
+greetings = ['Hello, '+ name for name in names]
+print(greetings)
+------------------
+#Block 4.1 -
+names = ["Elaine", "George", "Jerry", "Cosmo"]
+first_character = [ name[0] for name in names ]
+print(first_character )
+------------------
+#Block 4.2
+names = ["Elaine", "George", "Jerry", "Cosmo"]
+lengths = [len(name) for name in names]
+print(lengths)
+------------------
+#Block 4.3 - Flip a Boolean!! Very cute program
+#using not operator with list comprehensions
+booleans = [True, False, True]
+opposite = [not b for b in booleans]
+print(opposite)
+------------------
+#Block 4.4 - String comparison
+Create a new list called is_Jerry, in which an entry at position i is 
+True if the entry in names at position i equals "Jerry". The entry should be False otherwise
+names = ["Elaine", "George", "Jerry", "Cosmo"]
+is_Jerry = [name == "Jerry" for name in names]
+print(is_Jerry)
+------------------
+#Block 4.5 - List Comprehension with if condition
+nums = [5, -10, 40, 20, 0]
+# This returns a list of numbers greater than 2
+greater_than_two = [num for num in nums if num>2]
+print(greater_than_two)
+
+# This return a Boolean List
+greater_than_two = [num>2 for num in nums]
+print(greater_than_two)
+
+
+
+
+
+
+
+
+
