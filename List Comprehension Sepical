@@ -54,10 +54,40 @@ print(greater_than_two)
 # This return a Boolean List
 greater_than_two = [num>2 for num in nums]
 print(greater_than_two)
-
-
-
-
+------------------
+#Block 4.6 - True False for Nested_lists
+nested_lists = [[4, 8], [16, 15], [23, 42]]
+greater_than = [x>y for (x,y) in nested_lists]
+print(greater_than)
+------------------
+#Block 4.7 - 
+nested_lists = [[4, 8], [16, 15], [23, 42]]
+first_only = [x for (x,y) in nested_lists]
+print(first_only)
+------------------
+#Block 4.8 - Zipping
+a = [1.0, 2.0, 3.0]
+b = [4.0, 5.0, 6.0]
+sums = [(x+y) for (x,y) in zip(a,b)]
+print(sums)
+------------------
+#Block 4.9 
+a = [1.0, 2.0, 3.0]
+b = [4.0, 5.0, 6.0]
+quotients = [y/x for (x,y) in zip(a,b)]
+print(quotients)
+------------------
+#Block 4.10
+capitals = ["Santiago", "Paris", "Copenhagen"]
+countries = ["Chile", "France", "Denmark"]
+locations = [cap+', '+coun for(cap,coun) in zip(capitals,countries)]
+print(locations)
+------------------
+#Block 4.11
+names = ["Shilah", "Arya", "Kele"]
+ages = [14, 9, 35]
+users = ['Name: '+name + ', '+'Age: '+str(age) for (name,age) in zip(names,ages)]
+print(users)
 
 
 
