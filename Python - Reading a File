@@ -1,0 +1,104 @@
+Using a with statement, you are creating a file object that is 
+pointing to the file how_many_lines.txt
+#
+with open('text.txt') as f: 
+
+#Here the f is a file object having functionalities available for a file oject ,
+now what are those ? we do not know , but we have to understand it is a object, essestially we say 'file object' as the terminology goes,
+so do not get confused , remember it is an object of some class,
+and so we have make use of methods available or accessible through that file object.
+
+#you can check available methods using
+help(f) command so that's how you understand to get started with something completely new!
+
+------------------------------------------
+Reading a Line .readline() - single line 
+.readlines() - returns a list of lines , so you can use a for loop to present it better.
+.seek() allows you to move your pointer to desired location.
+
+------------------------------------------
+# Writing a File
+Reading a file is all well and good, but what if we want to create a file of our own?
+With Python we can do just that. It turns out that our open() function that we’re using
+to open a file to read needs another argument to open a file to write to.
+
+##in Write mode you create or over-write an existing file.
+-------------------------------------------
+# Appending a file - 'a' mode
+
+-------------------------------------------
+# CSV files : 
+syntax - same as normal files 
+because we are not yet using any csv capabilities of python yet.
+# import csv
+
+csv.DictReader(file_object) - to convert your data into dictionary with HEADERS as Key and corresponding field as Values - ex 8/13
+So basically each row gets converted into a dictionary in such a format and you must use a for loop
+to go through each row and use header as key to get the value for each of its row.------
+Let's do an example.
+
+### We pass the additional keyword argument newline='' to the file opening open() function so that we don’t 
+accidentally mistake a line break in one of our data fields as a new row in our CSV (read more about this in the Python documentation).####
+
+------------------------------------------
+#Reading Different Types of CSV Files. - meaning with a different delimiter
+csv.DictReader() has a parameter called delimiter
+
+import csv
+isbn_list = []
+with open('books.csv') as books_csv:
+  books_reader = csv.DictReader(books_csv,delimiter='@')
+  for r in books_reader:
+    isbn_list.append(r['ISBN'])
+print(isbn_list)
+
+-------------------------------------------
+# Writing a CSV File - DictWriter
+#new concepts - csv.DictWriter(file_object,fieldnames)  - fieldnames - parameter
+# .writeheader()
+# .writerow()
+
+#Excercise Code
+access_log = [{'time': '08:39:37', 'limit': 844404, 'address': '1.227.124.181'}, {'time': '13:13:35', 'limit': 543871, 'address': '198.51.139.193'}, {'time': '19:40:45', 'limit': 3021, 'address': '172.1.254.208'}, {'time': '18:57:16', 'limit': 67031769, 'address': '172.58.247.219'}, {'time': '21:17:13', 'limit': 9083, 'address': '124.144.20.113'}, {'time': '23:34:17', 'limit': 65913, 'address': '203.236.149.220'}, {'time': '13:58:05', 'limit': 1541474, 'address': '192.52.206.76'}, {'time': '10:52:00', 'limit': 11465607, 'address': '104.47.149.93'}, {'time': '14:56:12', 'limit': 109, 'address': '192.31.185.7'}, {'time': '18:56:35', 'limit': 6207, 'address': '2.228.164.197'}]
+fields = ['time', 'address', 'limit']
+
+import csv
+with open('logger.csv','w') as logger_csv:
+  log_writer = csv.DictWriter(logger_csv,fieldnames = fields)
+  log_writer.writeheader()
+
+  for item in access_log:
+    log_writer.writerow(item)
+
+#Reading the created csv file
+with open('logger.csv') as logger_csv:
+  print(logger_csv.read())
+
+-------------------------------------------
+# READING JSON file - json.load() instead of csv.DictReader()
+
+import json
+
+with open('message.json') as message_json:
+  message = json.load(message_json)  ----# here message is a python dictionary
+  print(message['text'])
+---------------------------------------------
+# Writing JSON file -- json.dump(data_object , file object)  -data object means which dict variable you want to write as json file and file object is for to whic file object.
+
+data_payload = [
+  {'interesting message': 'What is JSON? A web application\'s little pile of secrets.',
+   'follow up': 'But enough talk!'}
+]
+import json
+with open('data.json','w') as data_json:
+  json.dump(data_payload,data_json)
+--------------------------------------------
+
+
+
+
+
+
+
+
+
