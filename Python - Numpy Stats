@@ -1,0 +1,23 @@
+The statistical concepts that we’ll cover include:
+
+1. Mean : np.mean(water_height)
+2. Median - While the median tells us where half of our data lies, let's look at a value closer to the end of the dataset : np.median(water_height)
+3. Percentiles -  We can use percentiles to use a data points position and get its value : np.percentile(water_height, 75)
+4. Interquartile Range 
+5. Outliers
+6. Standard Deviation - Tells us the spread of our data : np.std(water_height)
+---------------------
+1. NUMPY AND MEAN
+# axis 1 - row
+# axis 0 - column
+
+1. we can filter through dataset using operators in np.mean(array>value 5) ; output is a percentage of total - dataset
+---------------------
+2. Outliers & Sorting
+
+np.sort(array) can tell quickly if any outlier exists
+--------------------
+3. Median Vs. Mean
+Mean gets affected by a few outliers
+Median represent the middle value meaning which value most of your dataset is at.
+--------------------
