@@ -1,0 +1,26 @@
+NumPy includes a powerful data structure known as an array.
+Each item can be of any type (strings, numbers, or even other arrays).
+------------------------------
+# Creating an Array from a CSV
+example : 
+csv_array = np.genfromtxt('sample.csv', delimiter=',')
+
+------------------------------
+#Operations with Array - cheat sheet - https://www.codecademy.com/learn/paths/analyze-data-with-python/tracks/ida-3-introduction-to-numpy/modules/ida-3-1-numpy-syntax/cheatsheet
+
+Cool Learning in Numpy - 
+to filter like an if condition 
+recipe = (say an array as below with ingredietns A,B,C,D )
+EACH ROW IS A SINGLE RECIPE 
+
+'A'       'B'    'C'   'D'     'E'
+[ 2.     0.75   2.     1.     0.5  ]
+ [ 1.     0.125  1.     1.     0.125]
+ [ 2.75   1.5    1.     0.     1.   ]
+ [ 4.     0.5    2.     2.     0.5  ]]
+
+to get only 'D' :-
+D = recipe[:,3]
+(to get all recipe(rows) with D =1); d_1 = recipe[(D==1)] 
+------------------------------
+
