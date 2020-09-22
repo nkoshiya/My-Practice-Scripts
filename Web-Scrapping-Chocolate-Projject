@@ -1,0 +1,48 @@
+import codecademylib3_seaborn
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+webpage= requests.get("https://s3.amazonaws.com/codecademy-content/courses/beautifulsoup/cacao/index.html")
+#print(webpage)
+soup = BeautifulSoup(webpage.content,'html.parser')
+#print(soup)
+ratings = [] 
+for tag in soup.find_all(attrs={"class": "Rating"})[1:]:
+  ratings.append(float(tag.get_text()))
+#print(ratings)
+
+plt.hist(ratings)
+plt.show()
+
+#print(soup.select(".Company"))
+company_names = []
+for tag in soup.select(".Company")[1:]:
+  company_names.append(tag.get_text())
+#print(company_names)
+
+d = {"Company":company_names,"Ratings":ratings}
+my_df = pd.DataFrame.from_dict(d)
+#print(my_df)
+mean_vals = my_df.groupby("Company").Ratings.mean()
+#print(mean_vals)
+top_ten = mean_vals.nlargest(10)
+#print(top_ten)
+cocoa_percents = []
+cocoa_percent_tags = soup.select(".CocoaPercent")
+for tag in cocoa_percent_tags[1:]:
+  percent = float(tag.get_text().strip('%'))
+  cocoa_percents.append(percent)
+#print(cocoa_percents)
+
+my_df["CocoaPercentage"] = cocoa_percents
+#print(my_df)
+plt.scatter(my_df.CocoaPercentage, my_df.Ratings)
+plt.show()
+
+
+z = np.polyfit(my_df.CocoaPercentage, my_df.Ratings, 1)
+line_function = np.poly1d(z)
+plt.plot(myy_df.CocoaPercentage, line_function(myy_df.CocoaPercentage), "r--")
